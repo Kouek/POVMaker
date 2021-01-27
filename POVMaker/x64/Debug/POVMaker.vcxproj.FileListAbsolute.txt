@@ -1,0 +1,2 @@
+D:\Work\repos\POVMaker\POVMaker\x64\Debug\POVMaker.exe
+D:\Work\repos\POVMaker\POVMaker\x64\Debug\POVMaker.pdb
