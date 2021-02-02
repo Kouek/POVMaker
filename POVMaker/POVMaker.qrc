@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="POVMaker">
-    </qresource>
+  <qresource prefix="POVMaker">
+    <file>resource/icon/minus.png</file>
+    <file>resource/icon/plus.png</file>
+  </qresource>
 </RCC>

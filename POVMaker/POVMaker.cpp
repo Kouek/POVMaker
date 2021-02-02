@@ -1,7 +1,52 @@
 #include "POVMaker.h"
 
-POVMaker::POVMaker(QWidget *parent)
-    : QMainWindow(parent)
+#include <QFileDialog>
+#include <QDir>
+
+#include <QDebug>
+
+using namespace povmaker;
+
+POVMaker::POVMaker(QWidget* parent)
+	: QMainWindow(parent)
 {
-    ui.setupUi(this);
+	ui.setupUi(this);
+	// 信号与槽初始化
+	connect(ui.loadVideosPushButton, &QPushButton::clicked, this, &POVMaker::loadVideos);
+
+	// 视频载入区
+	ui.videoListView->setModel(&loadedVideoListModel);
+
+	// 视频预览区
+
+}
+
+POVMaker::~POVMaker()
+{
+}
+
+void POVMaker::loadVideos()
+{
+	QStringList rsrcs = QFileDialog::getOpenFileNames(this, "select video resources", lastAccessDir);
+	if (rsrcs.length() > 0)
+		lastAccessDir = rsrcs[0].left(rsrcs[0].lastIndexOf('/'));
+	for(auto rsrc : rsrcs)
+	{
+		if (vPlayer.loadVideo(rsrc))
+		{
+			loadedVideoListModel.insertRow(loadedVideoListModel.rowCount());
+			QModelIndex index = loadedVideoListModel.index(loadedVideoListModel.rowCount() - 1, 0); // 获取最后一行
+			QString filename = vPlayer.getNewestLoaded()->pFormatCtx->filename;
+			loadedVideoListModel.setData(index, filename.right(filename.length() - filename.lastIndexOf('/') - 1));
+		}
+		else
+			appendOutputText(vPlayer.getErrMsg());
+	}
+}
+
+void POVMaker::appendOutputText(const QString& text)
+{
+	outputText.append(text);
+	ui.outputPlainTextEdit->setPlainText(text);
+	ui.outputPlainTextEdit->update();
 }
