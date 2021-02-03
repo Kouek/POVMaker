@@ -114,7 +114,14 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="VideoPlayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="POVMaker.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="povmaker_zh.ts" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

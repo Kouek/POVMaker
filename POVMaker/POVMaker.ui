@@ -32,13 +32,13 @@
          </size>
         </property>
         <property name="title">
-         <string>已载入视频资源</string>
+         <string>Loaded Videos</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
           <widget class="QPushButton" name="loadVideosPushButton">
            <property name="text">
-            <string>载入新视频</string>
+            <string>load new videos</string>
            </property>
            <property name="icon">
             <iconset resource="POVMaker.qrc">
@@ -80,7 +80,7 @@
          <item>
           <widget class="QPushButton" name="unloadVideosPushButton">
            <property name="text">
-            <string>卸载视频</string>
+            <string>unload video</string>
            </property>
            <property name="icon">
             <iconset resource="POVMaker.qrc">
@@ -136,7 +136,7 @@
        </size>
       </property>
       <property name="title">
-       <string>输出信息</string>
+       <string>Output</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -164,14 +164,14 @@ color: rgb(255, 255, 255);</string>
       <item>
        <widget class="QPushButton" name="playPushButton">
         <property name="text">
-         <string>播放</string>
+         <string>play</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="addCutPushButton">
         <property name="text">
-         <string>添加切分点</string>
+         <string>add cut</string>
         </property>
        </widget>
       </item>
@@ -188,18 +188,13 @@ color: rgb(255, 255, 255);</string>
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="ProjectMenu">
+   <widget class="QMenu" name="projectMenu">
     <property name="title">
-     <string>工程</string>
+     <string>Project</string>
     </property>
+    <addaction name="frameOptionAction"/>
    </widget>
-   <widget class="QMenu" name="ResourceMenu">
-    <property name="title">
-     <string>资源</string>
-    </property>
-   </widget>
-   <addaction name="ProjectMenu"/>
-   <addaction name="ResourceMenu"/>
+   <addaction name="projectMenu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -210,6 +205,11 @@ color: rgb(255, 255, 255);</string>
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="frameOptionAction">
+   <property name="text">
+    <string>Frame Option</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

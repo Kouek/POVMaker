@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QDialog>
+#include <QSpinBox>
 #include <QStringListModel>
 
 #include "ui_POVMaker.h"

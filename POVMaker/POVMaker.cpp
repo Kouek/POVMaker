@@ -1,5 +1,8 @@
 #include "POVMaker.h"
 
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+
 #include <QFileDialog>
 #include <QDir>
 
@@ -11,12 +14,13 @@ POVMaker::POVMaker(QWidget* parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	// 信号与槽初始化
-	connect(ui.loadVideosPushButton, &QPushButton::clicked, this, &POVMaker::loadVideos);
-	connect(ui.unloadVideosPushButton, &QPushButton::clicked, this, &POVMaker::unloadVideo);
+	
+	// 菜单栏
 
 	// 视频载入区
 	ui.videoListView->setModel(&loadedVideoListModel);
+	connect(ui.loadVideosPushButton, &QPushButton::clicked, this, &POVMaker::loadVideos);
+	connect(ui.unloadVideosPushButton, &QPushButton::clicked, this, &POVMaker::unloadVideo);
 
 	// 视频预览区
 
@@ -28,7 +32,7 @@ POVMaker::~POVMaker()
 
 void POVMaker::loadVideos()
 {
-	QStringList rsrcs = QFileDialog::getOpenFileNames(this, "select video resources", lastAccessDir);
+	QStringList rsrcs = QFileDialog::getOpenFileNames(this, tr("select video resources"), lastAccessDir);
 	if (rsrcs.length() > 0)
 		lastAccessDir = rsrcs[0].left(rsrcs[0].lastIndexOf('/'));
 	for(auto rsrc : rsrcs)
