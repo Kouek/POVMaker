@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QStringListModel>
+
 #include "ui_POVMaker.h"
 #include "VideoPlayer.h"
 

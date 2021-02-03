@@ -80,12 +80,17 @@ bool povmaker::VideoPlayer::loadVideo(QString filePath)
 	return true;
 }
 
-void povmaker::VideoPlayer::setCurVideo(int idx)
-{
-
-}
-
 void povmaker::VideoPlayer::unloadVideo(int idx)
 {
+	std::list<VideoStruct*>::iterator itr;
+	int dist = 0;
+	for (itr = loadedVideoList.begin(); itr != loadedVideoList.end(); ++itr, ++dist)
+	{
+		if (dist == idx)
+		{
+			loadedVideoList.erase(itr);
+			break;
+		}
+	}
 }
 

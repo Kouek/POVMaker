@@ -1,7 +1,6 @@
 #pragma once
 
-#include <QStringList>
-#include <QStringListModel>
+#include <QString>
 
 #include <list>
 
@@ -29,8 +28,10 @@ namespace povmaker
 	public:
 		VideoPlayer();
 		bool loadVideo(QString filePath);
-		void setCurVideo(int idx);
 		void unloadVideo(int idx);
+		void setCurPlay(int idx) {
+			curPlay = idx;
+		}
 		const QString& getErrMsg()
 		{
 			return errMsg;
@@ -44,6 +45,7 @@ namespace povmaker
 		}
 
 	private:
+		int curPlay;
 		QString errMsg;
 		std::list<VideoStruct*> loadedVideoList;
 	};

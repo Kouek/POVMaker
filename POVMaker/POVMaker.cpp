@@ -13,6 +13,7 @@ POVMaker::POVMaker(QWidget* parent)
 	ui.setupUi(this);
 	// 信号与槽初始化
 	connect(ui.loadVideosPushButton, &QPushButton::clicked, this, &POVMaker::loadVideos);
+	connect(ui.unloadVideosPushButton, &QPushButton::clicked, this, &POVMaker::unloadVideo);
 
 	// 视频载入区
 	ui.videoListView->setModel(&loadedVideoListModel);
@@ -42,6 +43,13 @@ void POVMaker::loadVideos()
 		else
 			appendOutputText(vPlayer.getErrMsg());
 	}
+}
+
+void POVMaker::unloadVideo()
+{
+	QModelIndex index = ui.videoListView->currentIndex();
+	vPlayer.unloadVideo(index.row());
+	loadedVideoListModel.removeRow(index.row());
 }
 
 void POVMaker::appendOutputText(const QString& text)
